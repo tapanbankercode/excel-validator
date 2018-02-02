@@ -1,4 +1,5 @@
 /target/*
 /.idea/workspace.xml
+.idea/workspace.xml
 /src/main/resources/outputbooks.csv
 src/main/resources/outputbooks.json
