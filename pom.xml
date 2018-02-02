@@ -83,7 +83,7 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
                     <configuration>
-                        <mainClass>net.codejava.excel.SimpleExcelReaderExample</mainClass>
+                        <mainClass>io.excel.validation.ApplicationExcel</mainClass>
                         <cleanupDaemonThreads>false</cleanupDaemonThreads>
                     </configuration>
                 </plugin>
