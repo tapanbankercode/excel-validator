@@ -1,11 +1,14 @@
 /target/*
 .idea/
 /src/main/resources/outputbooks.csv
-src/main/resources/outputbooks.json
+/src/main/resources/outputbooks.json
+/src/main/resources/temp.txt
+temp.txt
+*temp.txt
 .idea/*
 *.iml
 *MeasuresVerificationTestData.xlsx
 *outputMeasures.csv
 *outputMeasures.json
-*temp.txt
+
 *.DS_Store
