@@ -80,16 +80,19 @@
             <plugins>
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.7.0</version>
                     <configuration>
                         <source>1.8</source>
                         <target>1.8</target>
                     </configuration>
                 </plugin>
+
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
+                    <version>1.6.0</version>
                     <configuration>
-                        <mainClass>io.excel.validation.ApplicationExcel</mainClass>
+                        <mainClass>ApplicationExcel</mainClass>
                         <cleanupDaemonThreads>false</cleanupDaemonThreads>
                     </configuration>
                 </plugin>
