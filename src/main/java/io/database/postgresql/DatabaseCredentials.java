@@ -6,8 +6,12 @@ package io.database.postgresql;
  * Interface to store Database credentials
  */
 public interface DatabaseCredentials {
+    // Database Host URL
     public static final String HOST = "jdbc:postgresql://localhost:5432/";
-    public static final String DB_NAME = "measuresdb";
-    public static final String USERNAME = "postgres";
-    public static final String PASSWORD = "root";
+    // Database Name
+    public static final String DB_NAME = "DB_NAME";
+    // Database username
+    public static final String USERNAME = "USERNAME";
+    // Database password
+    public static final String PASSWORD = "PASSWORD";
 }
