@@ -76,157 +76,100 @@ public class MeasuresExcelReader {
                     switch (columnIndex) {
                         case 0:
                             if (getCellValue(nextCell) instanceof String) {
-                                // Trim the space, eliminate special case , " '
-                                String plainString = getCellValue(nextCell).toString().trim();
-                                String csvPlainTitle = plainString.replaceAll(",", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\'", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\"", "");
                                 // Extract the value and set in the ArrayList
-                                measure.setPtn(csvPlainTitle);
+                                measure.setPtn(getCellValue(nextCell).toString());
                                 break;
                             } else {
                                 LOGGER.error(" Instance Type Mismatch on Cell A" + nextCell.getRowIndex());
                             }
                         case 1:
                             if (getCellValue(nextCell) instanceof String) {
-                                String plainString = getCellValue(nextCell).toString().trim();
-                                String csvPlainTitle = plainString.replaceAll(",", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\'", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\"", "");
-                                measure.setMeasure(csvPlainTitle);
-
+                                // Extract the value and set in the ArrayList
+                                measure.setMeasure(getCellValue(nextCell).toString());
                                 break;
                             } else {
                                 LOGGER.error(" Instance Type Mismatch on Cell B" + nextCell.getRowIndex());
                             }
                         case 2:
                             if (getCellValue(nextCell) instanceof String) {
-                                String plainString = getCellValue(nextCell).toString().trim();
-                                String csvPlainTitle = plainString.replaceAll(",", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\'", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\"", "");
-                                measure.setStandardizedMeasureName(csvPlainTitle);
+                                measure.setStandardizedMeasureName(getCellValue(nextCell).toString());
                                 break;
                             } else {
                                 LOGGER.error(" Instance Type Mismatch on Cell C" + nextCell.getRowIndex());
                             }
                         case 3:
                             if (getCellValue(nextCell) instanceof String) {
-                                String plainString = getCellValue(nextCell).toString().trim();
-                                String csvPlainTitle = plainString.replaceAll(",", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\'", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\"", "");
-                                measure.setMeasureType(csvPlainTitle);
+                                measure.setMeasureType(getCellValue(nextCell).toString());
                                 break;
                             } else {
                                 LOGGER.error(" Instance Type Mismatch on Cell D" + nextCell.getRowIndex());
                             }
                         case 4:
                             if (getCellValue(nextCell) instanceof String) {
-                                String plainString = getCellValue(nextCell).toString().trim();
-                                String csvPlainTitle = plainString.replaceAll(",", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\'", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\"", "");
-                                measure.setImprovementAreaGoal(csvPlainTitle);
+                                measure.setImprovementAreaGoal(getCellValue(nextCell).toString());
                                 break;
                             } else {
                                 LOGGER.error(" Instance Type Mismatch on Cell E" + nextCell.getRowIndex());
                             }
                         case 5:
                             if (getCellValue(nextCell) instanceof String) {
-                                String plainString = getCellValue(nextCell).toString().trim();
-                                String csvPlainTitle = plainString.replaceAll(",", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\'", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\"", "");
-                                measure.setNationalStandardDefinitionUsed(csvPlainTitle);
+                                measure.setNationalStandardDefinitionUsed(getCellValue(nextCell).toString());
                                 break;
                             } else {
                                 LOGGER.error(" Instance Type Mismatch on Cell F" + nextCell.getRowIndex());
                             }
                         case 6:
                             if (getCellValue(nextCell) instanceof String) {
-                                String plainString = getCellValue(nextCell).toString().trim();
-                                String csvPlainTitle = plainString.replaceAll(",", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\'", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\"", "");
-                                measure.setAcronyms(csvPlainTitle);
+                                measure.setAcronyms(getCellValue(nextCell).toString());
                                 break;
                             } else {
                                 LOGGER.error(" Instance Type Mismatch on Cell G" + nextCell.getRowIndex());
                             }
                         case 7:
                             if (getCellValue(nextCell) instanceof String) {
-                                String plainString = getCellValue(nextCell).toString().trim();
-                                String csvPlainTitle = plainString.replaceAll(",", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\'", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\"", "");
-                                measure.setIdentifiers(csvPlainTitle);
+                                measure.setIdentifiers(getCellValue(nextCell).toString());
                                 break;
                             } else {
                                 LOGGER.error(" Instance Type Mismatch on Cell H" + nextCell.getRowIndex());
                             }
                         case 8:
                             if (getCellValue(nextCell) instanceof String) {
-                                String plainString = getCellValue(nextCell).toString().trim();
-                                String csvPlainTitle = plainString.replaceAll(",", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\'", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\"", "");
-                                measure.setNqf(csvPlainTitle);
+                                measure.setNqf(getCellValue(nextCell).toString());
                                 break;
                             } else {
                                 LOGGER.error(" Instance Type Mismatch on Cell I" + nextCell.getRowIndex());
                             }
                         case 9:
                             if (getCellValue(nextCell) instanceof String) {
-                                String plainString = getCellValue(nextCell).toString().trim();
-                                String csvPlainTitle = plainString.replaceAll(",", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\'", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\"", "");
-                                measure.setPqrs(csvPlainTitle);
+                                measure.setPqrs(getCellValue(nextCell).toString());
                                 break;
                             } else {
                                 LOGGER.error(" Instance Type Mismatch on Cell J" + nextCell.getRowIndex());
                             }
                         case 10:
                             if (getCellValue(nextCell) instanceof String) {
-                                String plainString = getCellValue(nextCell).toString().trim();
-                                String csvPlainTitle = plainString.replaceAll(",", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\'", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\"", "");
-                                measure.setCms(csvPlainTitle);
+                                measure.setCms(getCellValue(nextCell).toString());
                                 break;
                             } else {
                                 LOGGER.error(" Instance Type Mismatch on Cell K" + nextCell.getRowIndex());
                             }
                         case 11:
                             if (getCellValue(nextCell) instanceof String) {
-                                String plainString = getCellValue(nextCell).toString().trim();
-                                String csvPlainTitle = plainString.replaceAll(",", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\'", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\"", "");
-                                measure.setOther(csvPlainTitle);
+                                measure.setOther(getCellValue(nextCell).toString());
                                 break;
                             } else {
                                 LOGGER.error(" Instance Type Mismatch on Cell L" + nextCell.getRowIndex());
                             }
                         case 12:
                             if (getCellValue(nextCell) instanceof String) {
-                                String plainString = getCellValue(nextCell).toString().trim();
-                                String csvPlainTitle = plainString.replaceAll(",", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\'", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\"", "");
-                                measure.setNumeratorDefinition(csvPlainTitle);
+                                measure.setNumeratorDefinition(getCellValue(nextCell).toString());
                                 break;
                             } else {
                                 LOGGER.error(" Instance Type Mismatch on Cell M" + nextCell.getRowIndex());
                             }
                         case 13:
                             if (getCellValue(nextCell) instanceof String) {
-                                String plainString = getCellValue(nextCell).toString().trim();
-                                String csvPlainTitle = plainString.replaceAll(",", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\'", "");
-                                csvPlainTitle = csvPlainTitle.replaceAll("\"", "");
-                                measure.setDenominatorDefinition(csvPlainTitle);
+                                measure.setDenominatorDefinition(getCellValue(nextCell).toString());
                                 break;
                             } else {
                                 LOGGER.error(" Instance Type Mismatch on Cell N" + nextCell.getRowIndex());
@@ -518,7 +461,25 @@ public class MeasuresExcelReader {
         // Check the data type of the cell
         switch (cell.getCellTypeEnum()) {
             case STRING:
-                return cell.getStringCellValue();
+
+                String plainString = cell.getStringCellValue();
+                // If Empty String or Null return empty string
+                if(plainString.equals("") || plainString.equals(null) ) {
+                    return "";
+                } else {
+                    String filterCellStringValue = plainString.toString().trim();
+                    filterCellStringValue = filterCellStringValue.replaceAll(",", "");
+                    filterCellStringValue = filterCellStringValue.replaceAll("\n", "");
+                    filterCellStringValue = filterCellStringValue.replaceAll("\'", "");
+                    filterCellStringValue = filterCellStringValue.replaceAll("\"", "");
+                    filterCellStringValue = filterCellStringValue.replaceAll("\uF0B7", "");
+                    filterCellStringValue = filterCellStringValue.replaceAll("\uF0D8", "");
+                    filterCellStringValue = filterCellStringValue.replaceAll("•", "");
+                    filterCellStringValue = filterCellStringValue.replaceAll("·", "");
+                    filterCellStringValue = filterCellStringValue.replaceAll("‘", "");
+                    filterCellStringValue = filterCellStringValue.replaceAll("’", "");
+                    return filterCellStringValue;
+                }
             case BOOLEAN:
                 return cell.getBooleanCellValue();
             case NUMERIC:
