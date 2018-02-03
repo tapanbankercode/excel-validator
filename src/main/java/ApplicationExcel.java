@@ -30,8 +30,8 @@ public class ApplicationExcel {
         // Login to AWS using the secret Key and Access Key
         BasicAWSCredentials credentials = AWSS3Utility.loginToAws(AWSCredentials.ACCESS_KEY_ENCRYPTED, AWSCredentials.SECRET_KEY_ENCRYPTED);
         // List all the Buckets in AWS S3
-        // List<String> s3BucketList = AWSS3Utility.listS3Buckets(credentials);
-        // LOGGER.info(s3BucketList.toString());
+        List<String> s3BucketList = AWSS3Utility.listS3Buckets(credentials);
+        LOGGER.info(s3BucketList.toString());
 
         // Measure Excel File Reader
         MeasuresExcelReader measuresReader = new MeasuresExcelReader();

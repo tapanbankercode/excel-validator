@@ -1,8 +1,6 @@
 package io.excel.validation.Measures;
 
-import com.github.fge.jsonschema.core.exceptions.ProcessingException;
 import com.google.gson.Gson;
-import io.aws.s3.utilility.JsonSchemaValidationUtility;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -403,30 +401,6 @@ public class MeasuresExcelReader {
         return returnCount;
     }
 
-
-    /**
-     * This Method will perform JSOn Schema Validation on the JSON Data File
-     * @param schemaFile Schema File
-     * @param jsonFile Json File
-     * @return True = Valid  | False = InValid
-     * @throws IOException
-     */
-    public boolean validateMeasuresJsonSchema(File schemaFile, File jsonFile) throws IOException
-    {
-        try {
-            if (JsonSchemaValidationUtility.isJsonValid(schemaFile, jsonFile)){
-                //Valid
-                return true;
-
-            } else {
-                //NOT Valid
-                return false;
-            }
-        } catch (ProcessingException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
     /**
      * This method will insert the Measure ArrayList in the Database
      *
