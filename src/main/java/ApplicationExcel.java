@@ -64,7 +64,7 @@ public class ApplicationExcel {
             Connection connectionDB = postgresDBClient.getConnection();
             // Create the Table
             measuresReader.createMeasuresTable(connectionDB);
-            measuresReader.insertData(measuresList, connectionDB);
+            measuresReader.insertData(measuresList, connectionDB);             
         } catch (SQLException e1) {
             e1.printStackTrace();
         } catch (ClassNotFoundException e1) {

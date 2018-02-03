@@ -13,10 +13,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -420,6 +417,40 @@ public class MeasuresExcelReader {
         statement.executeUpdate(sqlCreateTableStatement);
 
         LOGGER.info("Measure table has successfully been created ");
+    }
+
+
+    /**
+     * This method returns number of records in the Measures Tables
+     * @param con
+     */
+    public int recordCountMeasureTable(Connection con){
+        Statement stmt=null;
+        int returnCount = -1;
+        try{
+            try{
+                stmt = con.createStatement();
+                String query = "SELECT COUNT(*) AS total FROM measures";
+                ResultSet rs=stmt.executeQuery(query);
+                //Extact result from ResultSet rs
+                while(rs.next()){
+                    LOGGER.info("Total Count "+rs.getInt("total)"));
+                    returnCount = rs.getInt("total");
+                }
+                // close ResultSet rs
+
+                rs.close();
+            } catch(SQLException s){
+                s.printStackTrace();
+            }
+            // close Connection and Statement
+            con.close();
+            stmt.close();
+            return returnCount;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return returnCount;
     }
 
     /**
