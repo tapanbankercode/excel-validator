@@ -4,3 +4,4 @@
 src/main/resources/outputbooks.json
 .idea/*
 *.iml
+*MeasuresVerificationTestData.xlsx
