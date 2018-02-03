@@ -5,7 +5,6 @@ import java.util.List;
 import com.amazonaws.auth.BasicAWSCredentials;
 import io.aws.s3.utilility.AWSCredentials;
 import io.aws.s3.utilility.AWSS3Utility;
-import io.database.postgresql.DatabaseCredentials;
 import io.database.postgresql.PostgresDbUtility;
 import io.excel.validation.Book.Book;
 import io.excel.validation.Book.BookExcelReader;
@@ -43,6 +42,7 @@ public class ApplicationExcel {
         String jsonMeasuresFilePath = System.getProperty("user.dir") + "/src/main/resources/outputMeasures.json";
         String csvMeasuresFilePath = System.getProperty("user.dir") + "/src/main/resources/outputMeasures.csv";
         String measureSheetName = "Sheet1";
+        int rowCount = -1;
 
         // File Path on local machine to Books 1. Input Excel File 2. Output Json and 3. Output CSV
         String excelBookFilePath = System.getProperty("user.dir") + "/src/main/resources/Books1.xlsx";
@@ -50,18 +50,14 @@ public class ApplicationExcel {
         String jsonBookFilePath = System.getProperty("user.dir") + "/src/main/resources/outputbooks.json";
         String booksSheetName = "CMSTCPI";
 
-
         // Get Array list by reading the Measure Excel File
         List<Measures> measuresList = measuresReader.readMeasuresFromExcelFile(excelMeasureFilePath, measureSheetName);
-        //LOGGER.info("ArrayList<Measure> = \n\n" + measuresList);
-
+        LOGGER.info("ArrayList<Measure> = \n\n" + measuresList);
         // Convert to JSON Object
         String stringJsonMeasure = measuresReader.convertToJson(measuresList);
-        //LOGGER.info("\n\n  JSON object Measure = " + stringJsonMeasure);
-
+        LOGGER.info("\n\n  JSON object Measure = " + stringJsonMeasure);
         //Output JSON to File Path
         measuresReader.outputJson(jsonMeasuresFilePath, stringJsonMeasure);
-
         // Convert to a CSV File for Measures
         measuresReader.convertToCsv(csvMeasuresFilePath, measuresList);
 
@@ -72,6 +68,9 @@ public class ApplicationExcel {
             measuresReader.createMeasuresTable(connectionDB);
             // Insert the Measure ArrayList Data in the Postgres SQL Table
             measuresReader.insertData(measuresList, connectionDB);
+            //Check the total Records Count in Measures Table
+            rowCount = measuresReader.recordCountMeasureTable(connectionDB);
+            LOGGER.info("Measure Table Row Count " + rowCount);
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
@@ -79,15 +78,12 @@ public class ApplicationExcel {
         // Get Array list by reading the Book Excel File
         List<Book> listBooks = bookReader.readBooksFromExcelFile(excelBookFilePath, booksSheetName);
         LOGGER.info("ArrayList<Book> = " + listBooks);
-
-        // Convert to JSON Object
+        // Convert Book to JSON Object
         String stringJsonBook = bookReader.convertToJson(listBooks);
         LOGGER.info("jsonStringListBook = " + stringJsonBook);
-
-        // Output JSON to File Path
+        // Output Book JSON to File Path
         bookReader.outputJson(jsonBookFilePath, stringJsonBook);
-
-        // Convert to a CSV File for Book
+        // Convert Book to a CSV File for Book
         bookReader.convertToCsv(csvBookFilePath, listBooks);
 
     }

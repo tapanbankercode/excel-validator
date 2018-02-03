@@ -375,16 +375,17 @@ public class MeasuresExcelReader {
         try {
             try {
                 stmt = con.createStatement();
-                String query = "SELECT COUNT(*) AS total FROM measures";
+                String query = "SELECT COUNT(*) AS total FROM measures as count";
                 ResultSet rs = stmt.executeQuery(query);
                 //Extact result from ResultSet rs
                 while (rs.next()) {
-                    LOGGER.info("Total Count " + rs.getInt("total)"));
+                    LOGGER.info("Measure Table Total Count " + rs.getInt("total"));
                     returnCount = rs.getInt("total");
                 }
                 // close ResultSet rs
                 rs.close();
             } catch (SQLException s) {
+                LOGGER.error( s.toString());
                 s.printStackTrace();
             }
             // close Connection and Statement
@@ -468,6 +469,8 @@ public class MeasuresExcelReader {
                     return "";
                 } else {
                     String filterCellStringValue = plainString.toString().trim();
+
+                    // Remove all the special characters that are causing problem in CSV file to break the structure like ,' ‘
                     filterCellStringValue = filterCellStringValue.replaceAll(",", "");
                     filterCellStringValue = filterCellStringValue.replaceAll("\n", "");
                     filterCellStringValue = filterCellStringValue.replaceAll("\'", "");
