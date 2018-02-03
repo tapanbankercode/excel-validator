@@ -1,8 +1,10 @@
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.io.File;
 
 import com.amazonaws.auth.BasicAWSCredentials;
+import io.json.utility.JsonSchemaValidationUtility;
 import io.aws.s3.utilility.AWSCredentials;
 import io.aws.s3.utilility.AWSS3Utility;
 import io.database.postgresql.PostgresDbUtility;
@@ -28,8 +30,8 @@ public class ApplicationExcel {
         // Login to AWS using the secret Key and Access Key
         BasicAWSCredentials credentials = AWSS3Utility.loginToAws(AWSCredentials.ACCESS_KEY_ENCRYPTED, AWSCredentials.SECRET_KEY_ENCRYPTED);
         // List all the Buckets in AWS S3
-        List<String> s3BucketList = AWSS3Utility.listS3Buckets(credentials);
-        LOGGER.info(s3BucketList.toString());
+        // List<String> s3BucketList = AWSS3Utility.listS3Buckets(credentials);
+        // LOGGER.info(s3BucketList.toString());
 
         // Measure Excel File Reader
         MeasuresExcelReader measuresReader = new MeasuresExcelReader();
@@ -40,7 +42,10 @@ public class ApplicationExcel {
         // File Path on local Machine to Measures 1. Input Excel File 2. Output Json and 3. Output CSV
         String excelMeasureFilePath = System.getProperty("user.dir") + "/src/main/resources/MeasuresVerificationTestData.xlsx";
         String jsonMeasuresFilePath = System.getProperty("user.dir") + "/src/main/resources/outputMeasures.json";
+        String jsonMeasuresSchemaFilePath = System.getProperty("user.dir") + "/src/main/resources/schemaMeasures.json";
         String csvMeasuresFilePath = System.getProperty("user.dir") + "/src/main/resources/outputMeasures.csv";
+        File schemaFile = new File(jsonMeasuresSchemaFilePath);
+        File jsonFile = new File(jsonMeasuresFilePath);
         String measureSheetName = "Sheet1";
         int rowCount = -1;
 
@@ -61,6 +66,8 @@ public class ApplicationExcel {
         // Convert to a CSV File for Measures
         measuresReader.convertToCsv(csvMeasuresFilePath, measuresList);
 
+        Boolean valueb =  JsonSchemaValidationUtility.isJsonValid(schemaFile, jsonFile);
+        LOGGER.info(" ###########################################################################  Schem Validation " +valueb + "##############################################");
         try {
             // Database Postgres SQL Connection Object
             Connection connectionDB = PostgresDbUtility.getConnection();
