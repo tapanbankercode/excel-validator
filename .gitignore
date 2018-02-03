@@ -3,7 +3,8 @@
 src/main/resources/outputbooks.csv
 src/main/resources/outputbooks.json
 src/main/resources/temp.txt
-
+src/main/java/io/aws/s3/utilility/AWSCredentials.java
+src/main/java/io/database/postgresql/DatabaseCredentials.java
 temp.txt
 *temp.txt
 .idea/*
