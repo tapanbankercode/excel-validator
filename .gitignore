@@ -1,7 +1,6 @@
 /target/*
-/.idea/*
-/.idea/workspace.xml
-.idea/workspace.xml
+.idea/
 /src/main/resources/outputbooks.csv
 src/main/resources/outputbooks.json
 .idea/*
+*.iml
