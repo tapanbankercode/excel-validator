@@ -1,16 +1,9 @@
 /target/*
 .idea/
-/src/main/resources/outputbooks.csv
-/src/main/resources/outputbooks.json
-/src/main/resources/temp.txt
-/src/main/java/io/aws/s3/utilility/AWSCredentials.java
-/src/main/java/io/database/postgresql/DatabaseCredentials.java
-src/main/java/io/aws/s3/utilility/AWSCredentials.java
-src/main/java/io/database/postgresql/DatabaseCredentials.java
-*AWSCredentials.java
-AWSCredentials.java
-DatabaseCredentials.java
-*DatabaseCredentials.java
+src/main/resources/outputbooks.csv
+src/main/resources/outputbooks.json
+src/main/resources/temp.txt
+
 temp.txt
 *temp.txt
 .idea/*
@@ -18,5 +11,4 @@ temp.txt
 *MeasuresVerificationTestData.xlsx
 *outputMeasures.csv
 *outputMeasures.json
-
 *.DS_Store
