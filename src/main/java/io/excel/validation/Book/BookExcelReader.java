@@ -1,4 +1,4 @@
-package io.excel.validation;
+package io.excel.validation.Book;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,9 +16,9 @@ import org.slf4j.LoggerFactory;
  * @author Tapan N. Banker
  * ExcelRead For Book Object
  */
-public class ExcelReader {
+public class BookExcelReader {
 
-    private static Logger LOGGER = (Logger) LoggerFactory.getLogger(ExcelReader.class);
+    private static Logger LOGGER = (Logger) LoggerFactory.getLogger(BookExcelReader.class);
 
     //Delimiter used in CSV file
     private static final String COMMA_DELIMITER = ",";
@@ -26,7 +26,7 @@ public class ExcelReader {
     private static final String NEW_LINE_SEPARATOR = "\n";
 
     // Default Constructor
-    public ExcelReader() {
+    public BookExcelReader() {
     }
 
     /**

@@ -1,9 +1,10 @@
-package io.excel.validation;
+package io.excel.validation.Book;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+// PTN	Measure	Standardized Measure Name	Measure Type	Improvement Area Goal	National Standard Definition Used?	Acronym(s)	Identifier(s)	NQF	PQRS	CMS	Other	Numerator Definition	Denominator Definition
 /**
  * Created by Tapan N. Banker
  * @author Tapan N. Banker
@@ -53,30 +54,58 @@ public class Book {
         return title;
     }
 
+    /**
+     * Set the title
+     * @param title
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     * Returns the Author
+     * @return
+     */
     public String getAuthor() {
         return author;
     }
 
+    /**
+     * Set the Author
+     * @param author
+     */
     public void setAuthor(String author) {
         this.author = author;
     }
 
+    /**
+     * Return the price
+     * @return
+     */
     public double getPrice() {
         return price;
     }
 
+    /**
+     * Set the price
+     * @param price
+     */
     public void setPrice(double price) {
         this.price = price;
     }
 
+    /**
+     * Return the PublishDate
+     * @return
+     */
     public Date getPublishDate() {
         return publishDate;
     }
 
+    /**
+     * Set the publishDate
+     * @param publishDate
+     */
     public void setPublishDate(Date publishDate) {
         this.publishDate = publishDate;
     }
