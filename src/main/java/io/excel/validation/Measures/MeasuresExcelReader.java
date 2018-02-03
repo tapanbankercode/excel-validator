@@ -14,6 +14,7 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.*;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -84,7 +85,7 @@ public class MeasuresExcelReader {
                                 measure.setPtn(csvPlainTitle);
                                 break;
                             } else {
-                                LOGGER.error(" Instance Type Mismatch on Column 0 " + " Row = " + nextCell.getRowIndex());
+                                LOGGER.error(" Instance Type Mismatch on Cell A" + nextCell.getRowIndex());
                             }
                         case 1:
                             if (getCellValue(nextCell) instanceof String) {
@@ -96,7 +97,7 @@ public class MeasuresExcelReader {
 
                                 break;
                             } else {
-                                LOGGER.error(" Instance Type Mismatch on Column 1 " + " Row = " + nextCell.getRowIndex());
+                                LOGGER.error(" Instance Type Mismatch on Cell B" + nextCell.getRowIndex());
                             }
                         case 2:
                             if (getCellValue(nextCell) instanceof String) {
@@ -107,7 +108,7 @@ public class MeasuresExcelReader {
                                 measure.setStandardizedMeasureName(csvPlainTitle);
                                 break;
                             } else {
-                                LOGGER.error(" Instance Type Mismatch on Column 2 " + " Row = " + nextCell.getRowIndex());
+                                LOGGER.error(" Instance Type Mismatch on Cell C" + nextCell.getRowIndex());
                             }
                         case 3:
                             if (getCellValue(nextCell) instanceof String) {
@@ -118,7 +119,7 @@ public class MeasuresExcelReader {
                                 measure.setMeasureType(csvPlainTitle);
                                 break;
                             } else {
-                                LOGGER.error(" Instance Type Mismatch on Column 3 " + " Row = " + nextCell.getRowIndex());
+                                LOGGER.error(" Instance Type Mismatch on Cell D" + nextCell.getRowIndex());
                             }
                         case 4:
                             if (getCellValue(nextCell) instanceof String) {
@@ -129,7 +130,7 @@ public class MeasuresExcelReader {
                                 measure.setImprovementAreaGoal(csvPlainTitle);
                                 break;
                             } else {
-                                LOGGER.error(" Instance Type Mismatch on Column 4 " + " Row = " + nextCell.getRowIndex());
+                                LOGGER.error(" Instance Type Mismatch on Cell E" + nextCell.getRowIndex());
                             }
                         case 5:
                             if (getCellValue(nextCell) instanceof String) {
@@ -140,7 +141,7 @@ public class MeasuresExcelReader {
                                 measure.setNationalStandardDefinitionUsed(csvPlainTitle);
                                 break;
                             } else {
-                                LOGGER.error(" Instance Type Mismatch on Column 5 " + " Row = " + nextCell.getRowIndex());
+                                LOGGER.error(" Instance Type Mismatch on Cell F" + nextCell.getRowIndex());
                             }
                         case 6:
                             if (getCellValue(nextCell) instanceof String) {
@@ -151,7 +152,7 @@ public class MeasuresExcelReader {
                                 measure.setAcronyms(csvPlainTitle);
                                 break;
                             } else {
-                                LOGGER.error(" Instance Type Mismatch on Column 6 " + " Row = " + nextCell.getRowIndex());
+                                LOGGER.error(" Instance Type Mismatch on Cell G" + nextCell.getRowIndex());
                             }
                         case 7:
                             if (getCellValue(nextCell) instanceof String) {
@@ -162,7 +163,7 @@ public class MeasuresExcelReader {
                                 measure.setIdentifiers(csvPlainTitle);
                                 break;
                             } else {
-                                LOGGER.error(" Instance Type Mismatch on Column 5 " + " Row = " + nextCell.getRowIndex());
+                                LOGGER.error(" Instance Type Mismatch on Cell H" + nextCell.getRowIndex());
                             }
                         case 8:
                             if (getCellValue(nextCell) instanceof String) {
@@ -173,7 +174,7 @@ public class MeasuresExcelReader {
                                 measure.setNqf(csvPlainTitle);
                                 break;
                             } else {
-                                LOGGER.error(" Instance Type Mismatch on Column 5 " + " Row = " + nextCell.getRowIndex());
+                                LOGGER.error(" Instance Type Mismatch on Cell I" + nextCell.getRowIndex());
                             }
                         case 9:
                             if (getCellValue(nextCell) instanceof String) {
@@ -184,7 +185,7 @@ public class MeasuresExcelReader {
                                 measure.setPqrs(csvPlainTitle);
                                 break;
                             } else {
-                                LOGGER.error(" Instance Type Mismatch on Column 5 " + " Row = " + nextCell.getRowIndex());
+                                LOGGER.error(" Instance Type Mismatch on Cell J" + nextCell.getRowIndex());
                             }
                         case 10:
                             if (getCellValue(nextCell) instanceof String) {
@@ -195,7 +196,7 @@ public class MeasuresExcelReader {
                                 measure.setCms(csvPlainTitle);
                                 break;
                             } else {
-                                LOGGER.error(" Instance Type Mismatch on Column 5 " + " Row = " + nextCell.getRowIndex());
+                                LOGGER.error(" Instance Type Mismatch on Cell K" + nextCell.getRowIndex());
                             }
                         case 11:
                             if (getCellValue(nextCell) instanceof String) {
@@ -206,7 +207,7 @@ public class MeasuresExcelReader {
                                 measure.setOther(csvPlainTitle);
                                 break;
                             } else {
-                                LOGGER.error(" Instance Type Mismatch on Column 5 " + " Row = " + nextCell.getRowIndex());
+                                LOGGER.error(" Instance Type Mismatch on Cell L" + nextCell.getRowIndex());
                             }
                         case 12:
                             if (getCellValue(nextCell) instanceof String) {
@@ -217,7 +218,7 @@ public class MeasuresExcelReader {
                                 measure.setNumeratorDefinition(csvPlainTitle);
                                 break;
                             } else {
-                                LOGGER.error(" Instance Type Mismatch on Column 5 " + " Row = " + nextCell.getRowIndex());
+                                LOGGER.error(" Instance Type Mismatch on Cell M" + nextCell.getRowIndex());
                             }
                         case 13:
                             if (getCellValue(nextCell) instanceof String) {
@@ -228,7 +229,7 @@ public class MeasuresExcelReader {
                                 measure.setDenominatorDefinition(csvPlainTitle);
                                 break;
                             } else {
-                                LOGGER.error(" Instance Type Mismatch on Column 5 " + " Row = " + nextCell.getRowIndex());
+                                LOGGER.error(" Instance Type Mismatch on Cell N" + nextCell.getRowIndex());
                             }
                     }
                 }
@@ -439,7 +440,6 @@ public class MeasuresExcelReader {
                     returnCount = rs.getInt("total");
                 }
                 // close ResultSet rs
-
                 rs.close();
             } catch (SQLException s) {
                 s.printStackTrace();
@@ -491,13 +491,16 @@ public class MeasuresExcelReader {
                 preparedStatement.setString(14, b.getDenominatorDefinition());
 
                 // execute insert SQL statement
-                preparedStatement.executeUpdate();
+                int rowCount = preparedStatement.executeUpdate();
+                if (rowCount == 0) {
+                    LOGGER.warn("Unable to Inserted on Measures Tables :" + rowCount + " Object Value " + b.toString());
+                }
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            LOGGER.error(e.getMessage());
 
         } finally {
-
+            LOGGER.info("Data inserted in Measure Table successfully at Time : " + Instant.now());
             if (preparedStatement != null) {
                 preparedStatement.close();
             }

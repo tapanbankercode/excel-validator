@@ -5,9 +5,12 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.Bucket;
-import io.excel.validation.Book.BookExcelReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Tapan N. Banker on 2/3/18.
@@ -16,12 +19,12 @@ import org.slf4j.LoggerFactory;
  */
 public class AWSS3Utility {
 
-    private static Logger LOGGER = (Logger) LoggerFactory.getLogger(BookExcelReader.class);
+    private static Logger LOGGER = (Logger) LoggerFactory.getLogger(AWSS3Utility.class);
 
     /**
      * This method performs Secure Login to AWS encrypted AES 256 bit algorithm
-     * @param accessKey
-     * @param secretKey
+     * @param accessKey accessKey
+     * @param secretKey secretKey
      * @return BasicAWSCredentials
      * @throws Exception
      */
@@ -29,7 +32,7 @@ public class AWSS3Utility {
         String plainAccessKey = EncryptionAES.decrypt(accessKey);
         String plainSecretKey = EncryptionAES.decrypt(secretKey);
         BasicAWSCredentials credentials = new BasicAWSCredentials(plainAccessKey, plainSecretKey);
-        LOGGER.info(" Successful Login attempted by accessKey "+plainAccessKey);
+        LOGGER.warn("ALERT Successful Login attempted by accessKey ******" + accessKey + "****** at "+ Instant.now() );
         return credentials;
     }
 
@@ -38,11 +41,19 @@ public class AWSS3Utility {
      * List all the S3 Buckets in the AWS Account
      * @param credentials BasicAWSCredentials
      */
-    public static void listS3Buckets(BasicAWSCredentials credentials) {
+    public static List<String> listS3Buckets(BasicAWSCredentials credentials) {
+
+        // Get S3 client
         AmazonS3 s3Client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials)).build();
+        // Store the list of Buckets in ArrayList
+        ArrayList<String> listOfS3Buckets = new ArrayList<>();
+
+        // Iterate each bucket
         for (Bucket bucket : s3Client.listBuckets()) {
-            System.out.println(" - " + bucket.getName());
+            listOfS3Buckets.add(bucket.getName());
         }
+        LOGGER.info(" Returning the List of S3 Buckets");
+        return listOfS3Buckets;
     }
 
 }

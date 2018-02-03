@@ -22,27 +22,21 @@ import org.slf4j.LoggerFactory;
  */
 public class ApplicationExcel {
 
-    private static Logger LOGGER = (Logger) LoggerFactory.getLogger(BookExcelReader.class);
+    private static Logger LOGGER = (Logger) LoggerFactory.getLogger(ApplicationExcel.class);
 
     public static void main(String[] args) throws Exception {
 
         // Login to AWS using the secret Key and Access Key
         BasicAWSCredentials credentials = AWSS3Utility.loginToAws(AWSCredentials.ACCESS_KEY_ENCRYPTED, AWSCredentials.SECRET_KEY_ENCRYPTED);
         // List all the Buckets in AWS S3
-        AWSS3Utility.listS3Buckets(credentials);
+        List<String> s3BucketList = AWSS3Utility.listS3Buckets(credentials);
+        LOGGER.info(s3BucketList.toString());
 
         // Measure Excel File Reader
         MeasuresExcelReader measuresReader = new MeasuresExcelReader();
 
         // Book Excel File Reader
         BookExcelReader bookReader = new BookExcelReader();
-
-        // Database Postgres SQL Object
-        PostgresDbUtility postgresDbUtilityClient = new PostgresDbUtility(
-                DatabaseCredentials.HOST,
-                DatabaseCredentials.DB_NAME,
-                DatabaseCredentials.USERNAME,
-                DatabaseCredentials.PASSWORD);
 
         // File Path on local Machine to Measures 1. Input Excel File 2. Output Json and 3. Output CSV
         String excelMeasureFilePath = System.getProperty("user.dir") + "/src/main/resources/MeasuresVerificationTestData.xlsx";
@@ -59,11 +53,11 @@ public class ApplicationExcel {
 
         // Get Array list by reading the Measure Excel File
         List<Measures> measuresList = measuresReader.readMeasuresFromExcelFile(excelMeasureFilePath, measureSheetName);
-        LOGGER.info("ArrayList<Measure> = \n\n" + measuresList);
+        //LOGGER.info("ArrayList<Measure> = \n\n" + measuresList);
 
         // Convert to JSON Object
         String stringJsonMeasure = measuresReader.convertToJson(measuresList);
-        LOGGER.info("\n\n  JSON object Measure = " + stringJsonMeasure);
+        //LOGGER.info("\n\n  JSON object Measure = " + stringJsonMeasure);
 
         //Output JSON to File Path
         measuresReader.outputJson(jsonMeasuresFilePath, stringJsonMeasure);
@@ -72,13 +66,13 @@ public class ApplicationExcel {
         measuresReader.convertToCsv(csvMeasuresFilePath, measuresList);
 
         try {
-            Connection connectionDB = postgresDbUtilityClient.getConnection();
+            // Database Postgres SQL Connection Object
+            Connection connectionDB = PostgresDbUtility.getConnection();
             // Create the Table
             measuresReader.createMeasuresTable(connectionDB);
+            // Insert the Measure ArrayList Data in the Postgres SQL Table
             measuresReader.insertData(measuresList, connectionDB);
         } catch (SQLException e1) {
-            e1.printStackTrace();
-        } catch (ClassNotFoundException e1) {
             e1.printStackTrace();
         }
 

@@ -14,5 +14,4 @@ public interface DatabaseCredentials {
     public static final String USERNAME = "USERNAME";
     // Database password
     public static final String PASSWORD = "PASSWORD";
-
 }

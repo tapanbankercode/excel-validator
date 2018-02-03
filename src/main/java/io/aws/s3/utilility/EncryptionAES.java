@@ -1,8 +1,12 @@
 package io.aws.s3.utilility;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.security.Key;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+import java.time.Instant;
 import java.util.Base64;
 /*
  * Created by Tapan N. Banker on 2/3/18.
@@ -13,6 +17,8 @@ public class EncryptionAES {
     private static final String ALGORITHM = "AES";
     private static final byte[] secretKeyValue =
             new byte[]{'B', 'o', 'o', 'Z', 'a', 'L', 'L', 'e', 'N', 'c', 'r', 'e', 't', 'K', 'e', 'y'};
+    private static Logger LOGGER = (Logger) LoggerFactory.getLogger(EncryptionAES.class);
+
 
     /**
      * Encrypt a string with AES algorithm.
@@ -25,6 +31,7 @@ public class EncryptionAES {
         Cipher c = Cipher.getInstance(ALGORITHM);
         c.init(Cipher.ENCRYPT_MODE, key);
         byte[] encVal = c.doFinal(data.getBytes());
+        LOGGER.warn("Encryption attemplted + " + Instant.now());
         return Base64.getEncoder().encodeToString(encVal);
     }
 

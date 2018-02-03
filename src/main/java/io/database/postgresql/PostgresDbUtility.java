@@ -1,6 +1,10 @@
 package io.database.postgresql;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.*;
+import java.time.Instant;
 
 /**
  * Utility to Connect to PostGre Database
@@ -9,39 +13,36 @@ import java.sql.*;
  */
 public class PostgresDbUtility {
 
-	private Connection conn;
-	private String host;
-	private String dbName;
-	private String user;
-	private String pass;
+	private static Connection connectionDB;
 
-	// Default Constructor
-	protected PostgresDbUtility() {}
-
-	// Postgres Database Constructor
-	public PostgresDbUtility(String host, String dbName, String user, String pass) {
-		this.host = host;
-		this.dbName = dbName;
-		this.user = user;
-		this.pass = pass;
-	}
+    private static Logger LOGGER = (Logger) LoggerFactory.getLogger(PostgresDbUtility.class);
 
 
-	/**
-	 * This method will return the Database Connection for Postgres Database
-	 * @return Connection Object
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
-	 */
-	public Connection getConnection() throws SQLException, ClassNotFoundException {
-		if (host.isEmpty() || dbName.isEmpty() || user.isEmpty() || pass.isEmpty()) {
-			throw new SQLException("Database credentials missing");
-		}
-		Class.forName("org.postgresql.Driver");
-		this.conn = DriverManager.getConnection(
-				this.host + this.dbName,
-				this.user, this.pass);
-		return conn;
+    static {
+        try {
+            // Obtain the Database Driver for PostgreSQL
+            Class.forName("org.postgresql.Driver");
+            // Get the Connection
+            connectionDB = DriverManager.getConnection(
+                    DatabaseCredentials.HOST + DatabaseCredentials.DB_NAME,
+                    DatabaseCredentials.USERNAME, DatabaseCredentials.PASSWORD);
+            LOGGER.info(" Database Connection Obtained at "+ Instant.now());
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    /**
+     * This method will return the Database Connection for Postgres Database (Singelton Instance)
+     * @return Connection Object
+     */
+    public static Connection getConnection() {
+        return connectionDB;
 	}
 
 }
