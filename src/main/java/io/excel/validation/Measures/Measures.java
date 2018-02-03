@@ -2,6 +2,7 @@ package io.excel.validation.Measures;
 
 /**
  * Created by Tapan N. Banker
+ *
  * @author Tapan N. Banker
  */
 public class Measures {
@@ -20,8 +21,45 @@ public class Measures {
     private String numeratorDefinition;
     private String denominatorDefinition;
 
-    // Constructor
+    // Default Constructor
     public Measures() {
+    }
+
+    /**
+     * Parameter Constructor
+     *
+     * @param ptn
+     * @param measure
+     * @param standardizedMeasureName
+     * @param measureType
+     * @param improvementAreaGoal
+     * @param nationalStandardDefinitionUsed
+     * @param acronyms
+     * @param identifiers
+     * @param nqf
+     * @param pqrs
+     * @param cms
+     * @param other
+     * @param numeratorDefinition
+     * @param denominatorDefinition
+     */
+    public Measures(String ptn, String measure, String standardizedMeasureName, String measureType, String improvementAreaGoal,
+                    String nationalStandardDefinitionUsed, String acronyms, String identifiers, String nqf,
+                    String pqrs, String cms, String other, String numeratorDefinition, String denominatorDefinition) {
+        this.ptn = ptn;
+        this.measure = measure;
+        this.acronyms = acronyms;
+        this.nationalStandardDefinitionUsed = nationalStandardDefinitionUsed;
+        this.improvementAreaGoal = improvementAreaGoal;
+        this.measureType = measureType;
+        this.standardizedMeasureName = standardizedMeasureName;
+        this.identifiers = identifiers;
+        this.nqf = nqf;
+        this.pqrs = pqrs;
+        this.cms = cms;
+        this.other = other;
+        this.numeratorDefinition = numeratorDefinition;
+        this.denominatorDefinition = denominatorDefinition;
     }
 
     public String getPtn() {
@@ -138,50 +176,12 @@ public class Measures {
     }
 
     /**
-     * Constructor
-     * @param ptn
-     * @param measure
-     * @param standardizedMeasureName
-     * @param measureType
-     * @param improvementAreaGoal
-     * @param nationalStandardDefinitionUsed
-     * @param acronyms
-     * @param identifiers
-     * @param nqf
-     * @param pqrs
-     * @param cms
-     * @param other
-     * @param numeratorDefinition
-     * @param denominatorDefinition
-     */
-    public Measures(String ptn, String measure, String standardizedMeasureName, String measureType, String improvementAreaGoal,
-                    String nationalStandardDefinitionUsed, String acronyms, String identifiers, String nqf,
-                    String pqrs, String cms, String other, String numeratorDefinition, String denominatorDefinition) {
-
-        this.ptn = ptn;
-        this.measure = measure;
-        this.acronyms = acronyms;
-        this.nationalStandardDefinitionUsed = nationalStandardDefinitionUsed;
-        this.improvementAreaGoal = improvementAreaGoal;
-        this.measureType = measureType;
-        this.standardizedMeasureName = standardizedMeasureName;
-        this.identifiers = identifiers;
-        this.nqf = nqf;
-        this.pqrs = pqrs;
-        this.cms = cms;
-        this.other = other;
-        this.numeratorDefinition = numeratorDefinition;
-        this.denominatorDefinition = denominatorDefinition;
-
-    }
-
-
-    /**
      * the method return the custom string representation of the object
+     *
      * @return
      */
     public String toString() {
-        StringBuilder sb = new StringBuilder(500);
+        StringBuilder sb = new StringBuilder();
 
         sb.append(ptn);
         sb.append(" | ");

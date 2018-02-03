@@ -5,6 +5,7 @@ import java.sql.*;
 /**
  * Utility to Connect to PostGre Database
  * @Author Tapan N. Banker
+ * This Class Provides Connection to the Database Postgres SQL
  */
 public class PostgresDbUtility {
 
@@ -42,6 +43,5 @@ public class PostgresDbUtility {
 				this.user, this.pass);
 		return conn;
 	}
-
 
 }

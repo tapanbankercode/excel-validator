@@ -26,12 +26,11 @@ import java.util.List;
  */
 public class MeasuresExcelReader {
 
-    private static Logger LOGGER = (Logger) LoggerFactory.getLogger(MeasuresExcelReader.class);
-
     //Delimiter used in CSV file
     private static final String COMMA_DELIMITER = ",";
     // Delimiter for the new line
     private static final String NEW_LINE_SEPARATOR = "\n";
+    private static Logger LOGGER = (Logger) LoggerFactory.getLogger(MeasuresExcelReader.class);
 
     // Default Constructor
     public MeasuresExcelReader() {
@@ -390,6 +389,7 @@ public class MeasuresExcelReader {
 
     /**
      * This method will create a table called Measures in the Database
+     *
      * @param connectionDB
      * @throws SQLException
      */
@@ -397,19 +397,19 @@ public class MeasuresExcelReader {
         // SQL Statement to create Table
         String sqlCreateTableStatement = "CREATE TABLE IF NOT EXISTS Measures ( \n" +
                 "id SERIAL PRIMARY KEY, \n" +
-                "ptn text, \n"+
-                "measure text, \n"+
-                "standardizedMeasureName text, \n"+
+                "ptn text, \n" +
+                "measure text, \n" +
+                "standardizedMeasureName text, \n" +
                 "measureType text, \n" +
                 "improvementAreaGoal text, \n" +
-                "nationalStandardDefinitionUsed text, \n"+
-                "acronyms text, \n"+
-                "identifiers text, \n"+
-                "nqf text, \n"+
-                "pqrs text, \n"+
-                "cms text, \n"+
-                "other text, \n"+
-                "numeratorDefinition text, \n"+
+                "nationalStandardDefinitionUsed text, \n" +
+                "acronyms text, \n" +
+                "identifiers text, \n" +
+                "nqf text, \n" +
+                "pqrs text, \n" +
+                "cms text, \n" +
+                "other text, \n" +
+                "numeratorDefinition text, \n" +
                 "denominatorDefinition text \n" +
                 " ); ";
 
@@ -422,32 +422,33 @@ public class MeasuresExcelReader {
 
     /**
      * This method returns number of records in the Measures Tables
+     *
      * @param con
      */
-    public int recordCountMeasureTable(Connection con){
-        Statement stmt=null;
+    public int recordCountMeasureTable(Connection con) {
+        Statement stmt = null;
         int returnCount = -1;
-        try{
-            try{
+        try {
+            try {
                 stmt = con.createStatement();
                 String query = "SELECT COUNT(*) AS total FROM measures";
-                ResultSet rs=stmt.executeQuery(query);
+                ResultSet rs = stmt.executeQuery(query);
                 //Extact result from ResultSet rs
-                while(rs.next()){
-                    LOGGER.info("Total Count "+rs.getInt("total)"));
+                while (rs.next()) {
+                    LOGGER.info("Total Count " + rs.getInt("total)"));
                     returnCount = rs.getInt("total");
                 }
                 // close ResultSet rs
 
                 rs.close();
-            } catch(SQLException s){
+            } catch (SQLException s) {
                 s.printStackTrace();
             }
             // close Connection and Statement
             con.close();
             stmt.close();
             return returnCount;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return returnCount;
@@ -515,14 +516,12 @@ public class MeasuresExcelReader {
         switch (cell.getCellTypeEnum()) {
             case STRING:
                 return cell.getStringCellValue();
-
             case BOOLEAN:
                 return cell.getBooleanCellValue();
-
             case NUMERIC:
                 return cell.getNumericCellValue();
         }
-        // No match means Invalid Data type so return null
+        // No match means Invalid Data type so return empty string
         return "";
     }
 }
