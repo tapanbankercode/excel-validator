@@ -53,7 +53,7 @@ public class ApplicationExcel {
 
         // Convert to JSON
         String stringJsonMeasure = measuresReader.convertToJson(measuresList);
-        LOGGER.info("\n\nstringJsonMeasure = " + stringJsonMeasure);
+        LOGGER.info("\n\n  JSON object Measure = " + stringJsonMeasure);
         //Output JSON to File Path
         measuresReader.outputJson(jsonMeasuresFilePath, stringJsonMeasure);
 
@@ -64,7 +64,7 @@ public class ApplicationExcel {
             Connection connectionDB = postgresDBClient.getConnection();
             // Create the Table
             measuresReader.createMeasuresTable(connectionDB);
-            measuresReader.insertData(measuresList, connectionDB);             
+            measuresReader.insertData(measuresList, connectionDB);
         } catch (SQLException e1) {
             e1.printStackTrace();
         } catch (ClassNotFoundException e1) {

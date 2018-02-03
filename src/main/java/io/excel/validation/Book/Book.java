@@ -4,7 +4,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-// PTN	Measure	Standardized Measure Name	Measure Type	Improvement Area Goal	National Standard Definition Used?	Acronym(s)	Identifier(s)	NQF	PQRS	CMS	Other	Numerator Definition	Denominator Definition
 /**
  * Created by Tapan N. Banker
  * @author Tapan N. Banker
