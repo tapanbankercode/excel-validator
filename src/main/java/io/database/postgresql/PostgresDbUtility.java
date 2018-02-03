@@ -3,21 +3,23 @@ package io.database.postgresql;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.time.Instant;
 
 /**
  * Utility to Connect to PostGre Database
  * @Author Tapan N. Banker
- * This Class Provides Connection to the Database Postgres SQL
+ * This Class Provides Connection to the Database Postgres SQL Singelton Design pattern
  */
 public class PostgresDbUtility {
 
-	private static Connection connectionDB;
-
+    // Database Connection object
+    private static Connection connectionDB;
     private static Logger LOGGER = (Logger) LoggerFactory.getLogger(PostgresDbUtility.class);
 
-
+    // Singelton Design pattern using Static Block
     static {
         try {
             // Obtain the Database Driver for PostgreSQL
@@ -43,6 +45,6 @@ public class PostgresDbUtility {
      */
     public static Connection getConnection() {
         return connectionDB;
-	}
+    }
 
 }
