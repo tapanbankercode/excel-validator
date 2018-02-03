@@ -6,7 +6,7 @@ import java.sql.*;
  * Utility to Connect to PostGre Database
  * @Author Tapan N. Banker
  */
-public class PostgresDB {
+public class PostgresDbUtility {
 
 	private Connection conn;
 	private String host;
@@ -15,10 +15,10 @@ public class PostgresDB {
 	private String pass;
 
 	// Default Constructor
-	protected PostgresDB() {}
+	protected PostgresDbUtility() {}
 
 	// Postgres Database Constructor
-	public PostgresDB(String host, String dbName, String user, String pass) {
+	public PostgresDbUtility(String host, String dbName, String user, String pass) {
 		this.host = host;
 		this.dbName = dbName;
 		this.user = user;

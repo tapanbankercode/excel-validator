@@ -1,0 +1,15 @@
+        String plainAccessKey = "AKIAJRLDX32LDLQATBUA";
+        String plainSecretKey =  "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";
+        String cipherAccessKey = EncryptAES.encrypt(plainAccessKey);
+        String cipherSecretKey = EncryptAES.encrypt(plainSecretKey);
+        String retPlainAccessKey = EncryptAES.decrypt(cipherAccessKey);
+        String retPlainSecretKey = EncryptAES.decrypt(cipherSecretKey);
+        System.out.println(" plainAccessKey " + plainAccessKey );
+        System.out.println(" plainSecretKey " + plainSecretKey );
+        System.out.println("cipherAccessKey " + cipherAccessKey);
+        System.out.println("cipherSecretKey " + cipherSecretKey );
+        System.out.println("retPlainAccessKey " + retPlainAccessKey);
+        System.out.println("retPlainSecretKey " + retPlainSecretKey );
+
+         public static final String ACCESS_KEY_ENCRYPTED = "/48A40sOu62a2bm9dkHhPIiltd7ioCphqs/J5hrmXHI=";
+         public static final String SECRET_KEY_ENCRYPTED = "qm3bSUAmqlHHTiqmmZJzUVQKPUCt4jUoecELEw5r3WIytWS2mg7SZdGVKcxnI02R";

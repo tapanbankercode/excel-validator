@@ -46,7 +46,7 @@ public class MeasuresExcelReader {
      * @throws IOException
      */
     public List<Measures> readMeasuresFromExcelFile(String excelFilePath, String sheetName) throws IOException {
-        // Object to store Book
+        // Object to store Measures
         List<Measures> listOfMeasures = new ArrayList<>();
 
         // Read the Excel sheet
@@ -248,13 +248,13 @@ public class MeasuresExcelReader {
     /**
      * This method will convert the ArrayList into Json String Array
      *
-     * @param listBooks Arraylist containing Measures
+     * @param listMeasures Arraylist containing Measures
      * @return
      */
-    public String convertToJson(List<Measures> listBooks) {
+    public String convertToJson(List<Measures> listMeasures) {
         // Convert to JSON Object and write a file
         Gson gson = new Gson();
-        String jsonStringListBook = gson.toJson(listBooks);
+        String jsonStringListBook = gson.toJson(listMeasures);
         // Return the String Json Array
         return jsonStringListBook;
     }

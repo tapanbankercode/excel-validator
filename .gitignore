@@ -5,3 +5,7 @@ src/main/resources/outputbooks.json
 .idea/*
 *.iml
 *MeasuresVerificationTestData.xlsx
+*outputMeasures.csv
+*outputMeasures.json
+*temp.txt
+*.DS_Store
