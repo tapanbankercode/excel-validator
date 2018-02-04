@@ -62,10 +62,13 @@ public class MeasuresDataIngestApplication {
             // 4. Perform JSON Schema Validation on the output Object
             Boolean valueb = JsonSchemaValidationUtility.isJsonValid(schemaFile, jsonFile);
             LOGGER.info(" ###########  Measures Schema Validation ===== " + valueb + " =====  ##############");
+
+            // Upload the JSON file to S3 bucket and delete the file from local machine
             AWSS3Utility.uploadObjectToS3BucketAndDelete(credentials, s3bucketName, jsonMeasuresFilePathInBucket, jsonMeasuresFilePath);
 
             // 5. Output the CSV File for Measures - Convert to a CSV File for Measures
             measuresReader.outputToCsvFile(csvMeasuresFilePath, measuresList);
+            // Upload the CSV file to S3 bucket and delete the file from local machine
             AWSS3Utility.uploadObjectToS3BucketAndDelete(credentials, s3bucketName, csvMeasuresFilePathInBucket, csvMeasuresFilePath);
 
             // 6. Insert Measure data in the Database - Write the Data in the Database in Measures Tables
