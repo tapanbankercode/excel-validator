@@ -31,7 +31,7 @@ public class EncryptionAES {
         Cipher c = Cipher.getInstance(ALGORITHM);
         c.init(Cipher.ENCRYPT_MODE, key);
         byte[] encVal = c.doFinal(data.getBytes());
-        LOGGER.warn("Encryption attemplted + " + Instant.now());
+        LOGGER.warn("**** Encryption attempted **** + " + Instant.now());
         return Base64.getEncoder().encodeToString(encVal);
     }
 

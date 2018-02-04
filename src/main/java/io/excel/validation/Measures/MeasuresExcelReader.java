@@ -235,7 +235,7 @@ public class MeasuresExcelReader {
      * @param booksList
      * @throws Exception
      */
-    public void convertToCsv(String csvFilePath, List<Measures> booksList) throws Exception {
+    public void outputToCsvFile(String csvFilePath, List<Measures> booksList) throws Exception {
 
         FileWriter fileWriter = new FileWriter(csvFilePath);
         try {
@@ -403,7 +403,7 @@ public class MeasuresExcelReader {
         return returnCount;
     }
 
-    
+
     /**
      * This method will insert the Measure ArrayList in the Database
      *
@@ -412,6 +412,10 @@ public class MeasuresExcelReader {
      * @throws SQLException
      */
     public void insertData(List<Measures> measureList, Connection connectionDB) throws SQLException {
+
+        // Create the Measures Table in Database if not already created
+        this.createMeasuresTable(connectionDB);
+
 
         PreparedStatement preparedStatement = null;
         try {
