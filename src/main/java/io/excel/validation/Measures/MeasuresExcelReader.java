@@ -186,6 +186,8 @@ public class MeasuresExcelReader {
         // Close the Workbook, close the input stream
         workbook.close();
         inputStream.close();
+        // Remove File after it is read
+        removeMeasureFile(excelFilePath);
         // Return the ArrayList of all measures records
         return listOfMeasures;
     }
@@ -401,6 +403,7 @@ public class MeasuresExcelReader {
         return returnCount;
     }
 
+    
     /**
      * This method will insert the Measure ArrayList in the Database
      *
@@ -454,6 +457,24 @@ public class MeasuresExcelReader {
         }
     }
 
+
+    /**
+     * This method will delete the File from the local directory
+     * @param excelMeasureFilePath String Full Path to the file on local machine
+     * @return
+     */
+    public boolean removeMeasureFile(String excelMeasureFilePath) {
+        // File Object
+        File removeS3MeasureFile = new File(excelMeasureFilePath);
+        // Delete the Measure Excel File
+        if (removeS3MeasureFile.delete()) {
+            LOGGER.info("File deleted at location " + excelMeasureFilePath);
+            return true;
+        } else {
+            LOGGER.warn("Failure in deleting file at " + excelMeasureFilePath);
+            return false;
+        }
+    }
 
     /**
      * The method will return the cell data value

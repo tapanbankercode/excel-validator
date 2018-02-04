@@ -1,7 +1,6 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-06/schema#",
   "title": "Measures",
-  "description": "Measures Flat Array JSON Object",
   "type": "array",
   "items": {
     "type": "object",
@@ -12,55 +11,55 @@
       },
       "measure": {
         "description": "The name of ptn",
-        "type": "string"
+        "type": ["string", "null"]
       },
       "standardizedMeasureName": {
         "description": "The name of ptn",
-        "type": "string"
+        "type": ["string", "null"]
       },
       "measureType": {
         "description": "The name of ptn",
-        "type": "string"
+        "type": ["string", "null"]
       },
       "improvementAreaGoal": {
         "description": "The name of ptn",
-        "type": "string"
+        "type": ["string", "null"]
       },
       "nationalStandardDefinitionUsed": {
         "description": "The name of ptn",
-        "type": "string"
+        "type": ["string", "null"]
       },
       "acronyms": {
         "description": "The name of ptn",
-        "type": "string"
+        "type": ["string", "null"]
       },
       "identifiers": {
         "description": "The name of ptn",
-        "type": "string"
+        "type": ["string", "null"]
       },
       "nqf": {
         "description": "The name of ptn",
-        "type": "string"
+        "type": ["string", "null"]
       },
       "pqrs": {
         "description": "The name of ptn",
-        "type": "string"
+        "type": ["string", "null"]
       },
       "cms": {
         "description": "The name of ptn",
-        "type": "string"
+        "type": ["string", "null"]
       },
       "other": {
         "description": "The name of ptn",
-        "type": "string"
+        "type": ["string", "null"]
       },
       "numeratorDefinition": {
         "description": "The name of ptn",
-        "type": "string"
+        "type": ["string", "null"]
       },
       "denominatorDefinition": {
         "description": "The name of ptn",
-        "type": "string"
+        "type": ["string", "null"]
       }
     },
     "required": [
