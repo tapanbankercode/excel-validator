@@ -6,7 +6,9 @@ Apache POI is the pure Java API for reading and writing Excel files in both form
 
 Reference https://poi.apache.org/ 
 Tutorial  https://www.tutorialspoint.com/apache_poi/index.htm 
+More details at https://www.tapanbanker.com
 
+Created by Tapan http://www.tapanbanker.com/tapan.html 
 ## Configuration
 1. Required JDK 1.6 or higher
 2. Require JAVA_HOME setting on local machine 
